@@ -2,10 +2,14 @@
 
 # Final Project API Documentation
 
+## User Roles
+- **Role ID 1:** Customer
+- **Role ID 2:** Admin
+
 ## Auth
 
 ### POST Login
-- Endpoint: `http://localhost:8080/login`
+- Endpoint: `https://laundry-app-api-production.up.railway.app/login`
 - Body (raw JSON):
   ```json
   {
@@ -16,7 +20,7 @@
 ## Register Customer
 
 ### POST
-- **Endpoint:** `http://localhost:8080/register/customer`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/register/customer`
 - **Body (raw JSON):**
   ```json
   {
@@ -31,7 +35,7 @@
 ## Register Admin
 
 ### POST
-- **Endpoint:** `http://localhost:8080/register/admin`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/register/admin`
 - **Body (raw JSON):**
   ```json
   {
@@ -46,12 +50,12 @@
 ## Durations
 
 ### GET All Durations
-- **Endpoint:** `http://localhost:8080/durations`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/durations`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ### POST Create Duration
-- **Endpoint:** `http://localhost:8080/duration`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/duration`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 - **Body (raw JSON):**
@@ -62,7 +66,7 @@
   }
   
 ### PUT Update Duration
-- **Endpoint:** `http://localhost:8080/duration/2`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/duration/2`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 - **Body (raw JSON):**
@@ -72,19 +76,19 @@
   }
   
 ### DELETE Duration
-- **Endpoint:** `http://localhost:8080/duration/1`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/duration/1`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ## Laundry Services
 
 ### GET All Laundry Services
-- **Endpoint:** `http://localhost:8080/services`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/services`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ### POST Create Service
-- **Endpoint:** `http://localhost:8080/service`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/service`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 - **Body (raw JSON):**
@@ -96,7 +100,7 @@
   }
   
 ### PUT Update Service
-- **Endpoint:** `http://localhost:8080/service/1`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/service/1`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 - **Body (raw JSON):**
@@ -108,24 +112,24 @@
   }
   
 ### DELETE Service
-- **Endpoint:** `http://localhost:8080/service/2`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/service/2`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ## Orders
 
 ### GET All Orders
-- **Endpoint:** `http://localhost:8080/orders`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/orders`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ### GET Order By User
-- **Endpoint:** `http://localhost:8080/orders/1`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/orders/1`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 
 ### POST Create Order
-- **Endpoint:** `http://localhost:8080/orders`
+- **Endpoint:** `https://laundry-app-api-production.up.railway.app/orders`
 - **Authorization:** Bearer Token
 - **Token:** `<token>`
 - **Body (raw JSON):**
