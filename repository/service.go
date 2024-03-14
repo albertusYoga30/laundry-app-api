@@ -35,6 +35,16 @@ func CheckServiceData(db *sql.DB, id int) (exist bool, err error) {
 	return exist, nil
 }
 
+func CheckServiceName(db *sql.DB, name string) (exist bool, err error) {
+	var count int
+	err = db.QueryRow("SELECT COUNT(*) FROM laundry_services WHERE service_name = $1", name).Scan(&count)
+	if err != nil {
+		return false, err
+	}
+	exist = count > 0
+	return exist, nil
+}
+
 func GetServicePrice(db *sql.DB, id int) (price int, err error) {
 	var data model.Service
 	err = db.QueryRow("SELECT service_price FROM laundry_services WHERE service_id=$1", id).Scan(&data.ServicePrice)
@@ -57,7 +67,6 @@ func UpdateService(db *sql.DB, service model.Service) (err error) {
 }
 
 func DeleteService(db *sql.DB, service model.Service) (err error) {
-	sql := "DELETE FROM laundry_services WHERE laundry_id=$1"
-	errs := db.QueryRow(sql, service.ServiceID)
+	errs := db.QueryRow("DELETE FROM laundry_services WHERE service_id=$1", service.ServiceID)
 	return errs.Err()
 }

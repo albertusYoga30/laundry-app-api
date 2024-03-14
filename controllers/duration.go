@@ -42,8 +42,19 @@ func InsertDuration(c *gin.Context) {
 		return
 	}
 
-	if !dataExist {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Data isn't exist!"})
+	if dataExist {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Data already exist!"})
+		return
+	}
+
+	nameExist, errName := repository.CheckDurationName(database.DbConnection, duration.DurationName)
+	if errName != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": errName.Error()})
+		return
+	}
+
+	if nameExist {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Data already exist!"})
 		return
 	}
 
@@ -85,7 +96,7 @@ func UpdateDuration(c *gin.Context) {
 
 	err = repository.UpdateDuration(database.DbConnection, duration)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed Update Duration into Database!"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"result": "Success Update Duration"})

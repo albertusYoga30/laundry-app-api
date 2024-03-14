@@ -124,5 +124,5 @@ func InsertOrder(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"result": "Success Insert Order!"})
+	c.JSON(http.StatusOK, gin.H{"Message": "Success Insert Order!"})
 }

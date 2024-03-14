@@ -38,6 +38,17 @@ func InsertService(c *gin.Context) {
 		return
 	}
 
+	dataExist, errData := repository.CheckServiceName(database.DbConnection, service.ServiceName)
+	if errData != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": errData.Error()})
+		return
+	}
+
+	if dataExist {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Data already exist!"})
+		return
+	}
+
 	err = repository.InsertService(database.DbConnection, service)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed Insert Service into Database!"})
@@ -106,7 +117,7 @@ func DeleteService(c *gin.Context) {
 
 	err := repository.DeleteService(database.DbConnection, service)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed Update Service into Database!"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"result": "Success Update Service"})

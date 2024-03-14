@@ -15,6 +15,16 @@ func CheckDurationData(db *sql.DB, id int) (exist bool, err error) {
 	return exist, nil
 }
 
+func CheckDurationName(db *sql.DB, duration_name string) (exist bool, err error) {
+	var count int
+	err = db.QueryRow("SELECT COUNT(*) FROM durations WHERE duration_name = $1", duration_name).Scan(&count)
+	if err != nil {
+		return false, err
+	}
+	exist = count > 0
+	return exist, nil
+}
+
 func GetAllDurations(db *sql.DB) (result []model.Duration, err error) {
 	rows, err := db.Query("SELECT * FROM durations")
 	if err != nil {
