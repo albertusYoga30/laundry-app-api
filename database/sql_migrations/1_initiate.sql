@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS users (
     address VARCHAR(255),
     phone_Number VARCHAR(15),
     role_id INT REFERENCES roles(role_id),
-    token TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

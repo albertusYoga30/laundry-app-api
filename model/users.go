@@ -9,7 +9,6 @@ type User struct {
 	Address     string `json:"address"`
 	PhoneNumber string `json:"phone_number" binding:"required"`
 	RoleID      int    `json:"role_id"`
-	Token       string `json:"token"`
 }
 
 type Role struct {

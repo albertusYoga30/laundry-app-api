@@ -7,8 +7,8 @@ import (
 )
 
 func Register(db *sql.DB, user model.User) (err error) {
-	sql := "INSERT INTO users(username, password, email, address, phone_number,role_id) VALUES($1, $2, $3, $4, $5, $6)"
-	errs := db.QueryRow(sql, user.Username, user.Password, user.Email, user.Address, user.PhoneNumber, user.RoleID)
+	sql := "INSERT INTO users(username, password,name, email, address, phone_number,role_id) VALUES($1, $2, $3, $4, $5, $6, $7)"
+	errs := db.QueryRow(sql, user.Username, user.Password, user.Name, user.Email, user.Address, user.PhoneNumber, user.RoleID)
 	return errs.Err()
 }
 
